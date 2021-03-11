@@ -19,13 +19,8 @@ function Header({ user, loading }) {
             (user ? (
               <>
                 <li>
-                  <Link href="/profile">
-                    <a>Client-rendered profile</a>
-                  </Link>
-                </li>
-                <li>
-                  <Link href="/advanced/ssr-profile">
-                    <a>Server rendered profile (advanced)</a>
+                  <Link href="/users">
+                    <a>Manage Users</a>
                   </Link>
                 </li>
                 <li>
