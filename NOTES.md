@@ -1,6 +1,9 @@
 # Notes
 
 ### User Management
+The users we're managing are in charge of who gets to 
+receive products early for the purposes of reviewing them.
+
 - Name
 - Email
 - unique id (duh)
