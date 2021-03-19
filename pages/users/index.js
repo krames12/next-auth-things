@@ -1,9 +1,10 @@
 // This import is only needed when checking authentication status directly from getInitialProps
 // import auth0 from '../lib/auth0'
 import { useState, useEffect } from "react"
-import { useFetchUser } from '../lib/user'
-import getUsers from "../lib/graphql/getUsers"
-import Layout from '../components/layout'
+import { useFetchUser } from "../../lib/user"
+import getUsers from "../../lib/graphql/getUsers"
+import Layout from "../../components/layout"
+import User from "../../components/User"
 
 function UserList({users}) {
   return (
@@ -11,7 +12,11 @@ function UserList({users}) {
       <h1>All Users</h1>
       <ul>
         {users.map( ({id, name, email}) => (
-          <li key={id}>{name} - {email}</li>
+          <User 
+            id ={id}
+            name={name}
+            email={email}
+          />
         ))}
       </ul>
     </>
