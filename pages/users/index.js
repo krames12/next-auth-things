@@ -2,9 +2,9 @@
 // import auth0 from '../lib/auth0'
 import { useState, useEffect } from "react"
 import { useFetchUser } from "../../lib/user"
-import getUsers from "../../lib/graphql/getUsers"
 import Layout from "../../components/layout"
 import User from "../../components/User"
+import hasuraQuery from "../../lib/graphql/hasuraQuery"
 
 function UserList({users}) {
   return (
@@ -23,13 +23,23 @@ function UserList({users}) {
   )
 }
 
+const getUsersQuery = `
+  query GetUsers {
+    users {
+      name
+      id
+      email
+    }
+  }
+`
+
 const Users = () => {
   const { user, loading } = useFetchUser({ required: true })
   const [managingUsers, setManagingUsers] = useState([]);
 
   useEffect( async () => {
-    const currentUsers = await getUsers();
-    setManagingUsers(currentUsers);
+    const {data} = await hasuraQuery(getUsersQuery);
+    setManagingUsers(data?.users);
   }, [])
 
   return (
