@@ -25,10 +25,12 @@ const UserInformation = () => {
   const router = useRouter()
   const { person } = router.query
 
+  const queryVariables = { userId: person };
+
   useEffect( async () => {
     const {data} = await hasuraQuery(
       getUserQuery, 
-      { userId: person }
+      queryVariables
     );
     setCurrentUser(data?.users[0]);
 
